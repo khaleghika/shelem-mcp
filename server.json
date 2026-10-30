@@ -1,0 +1,24 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.khaleghika/shelem-scorekeeping",
+  "title": "Shelem Scorekeeping",
+  "description": "Scores Shelem (شلم) card game hands: bids, Mak, Shelem, the 1000-point rule and the 1165 win.",
+  "repository": {
+    "url": "https://github.com/khaleghika/shelem-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://github.com/khaleghika/shelem-mcp",
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "shelem-scorekeeping-mcp",
+      "version": "0.1.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

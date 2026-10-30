@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "shelem-scorekeeping-mcp"
+dynamic = ["version"]
+description = "MCP server that scores Shelem (شلم) card game hands with deterministic integer arithmetic."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "khaleghika" }]
+keywords = ["mcp", "model-context-protocol", "shelem", "card-game", "scorekeeping"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Games/Entertainment",
+]
+dependencies = [
+    "mcp>=2.3,<3",
+    "pydantic>=2.12,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "jsonschema>=4.20",
+    "build>=1.2",
+    "twine>=6",
+]
+
+[project.scripts]
+shelem-scorekeeping-mcp = "shelem_mcp.server:main"
+
+[project.urls]
+Homepage = "https://github.com/khaleghika/shelem-mcp"
+Repository = "https://github.com/khaleghika/shelem-mcp"
+Issues = "https://github.com/khaleghika/shelem-mcp/issues"
+
+[tool.hatch.version]
+path = "src/shelem_mcp/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/shelem_mcp"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/shelem_mcp",
+    "tests",
+    "docs",
+    "README.md",
+    "LICENSE",
+    "server.json",
+    "pyproject.toml",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
