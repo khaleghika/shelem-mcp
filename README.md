@@ -248,16 +248,9 @@ The current registry guides are:
 
 ### GitHub Actions
 
-Pushing a tag such as `v0.1.0` runs [`.github/workflows/publish-mcp.yml`](.github/workflows/publish-mcp.yml). The tag, the package version, and both version fields in `server.json` must be the same number. The workflow tests, builds, publishes `shelem-scorekeeping-mcp` to PyPI, then publishes this repository's `server.json` with `mcp-publisher` v1.8.6. The binary is verified with its Sigstore bundle before it runs, and it authenticates with GitHub OIDC (`login github-oidc`). No registry token is stored in the repository.
+Pushing a tag such as `v0.1.0` runs [`.github/workflows/publish-mcp.yml`](.github/workflows/publish-mcp.yml). The tag, the package version, and both version fields in `server.json` must be the same number. The workflow tests, builds, publishes `shelem-scorekeeping-mcp` to PyPI with a repository secret named `PYPI_API_TOKEN`, then publishes this repository's `server.json` with `mcp-publisher` v1.8.6. The binary is verified with its Sigstore bundle before it runs, and it authenticates with GitHub OIDC (`login github-oidc`). No registry token is stored in the repository.
 
-Before the first tag, add a [pending PyPI publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/) for the project name `shelem-scorekeeping-mcp`:
-
-| PyPI field | Value |
-| --- | --- |
-| Owner | `khaleghika` |
-| Repository | `shelem-mcp` |
-| Workflow | `publish-mcp.yml` |
-| Environment | leave empty |
+Create the PyPI token at [pypi.org/manage/account/token](https://pypi.org/manage/account/token/). Use scope **Entire account** until the project exists, then add it as the GitHub Actions secret `PYPI_API_TOKEN`.
 
 ```bash
 git tag v0.1.0

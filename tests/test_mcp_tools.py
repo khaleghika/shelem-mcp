@@ -355,6 +355,7 @@ class RegistryMetadataTest(unittest.TestCase):
             "login github-oidc",
             "./mcp-publisher publish",
             "pypa/gh-action-pypi-publish@release/v1",
+            "secrets.PYPI_API_TOKEN",
             "sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6",
         ):
             self.assertIn(phrase, workflow)
